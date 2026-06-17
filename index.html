@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Actech — AI-Powered Marketing Automation Platform</title>
-  <meta name="description" content="Actech is an AI-powered end-to-end marketing automation platform. Create campaigns, schedule content, post everywhere, manage leads — all from one stunning dashboard." />
+  <title>Balin — AI-Powered Marketing Automation Platform</title>
+  <meta name="description" content="Balin is an AI-powered end-to-end marketing automation platform. Create campaigns, schedule content, post everywhere, manage leads — all from one stunning dashboard." />
 
   <!-- ===== Google Fonts: Plus Jakarta Sans ===== -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -17,10 +17,10 @@
        ============================================================ */
     :root {
       /* Unified dark base — ONE background for everything */
-      --dark-base: #07091A;
-      --dark-900: #07091A;
-      --dark-800: #07091A;
-      --dark-700: #07091A;
+      --dark-base: #000000;
+      --dark-900: #000000;
+      --dark-800: #000000;
+      --dark-700: #000000;
       --dark-600: #0C1126;
       --dark-500: #111830;
 
@@ -30,27 +30,29 @@
       --glass-hover:  rgba(255,255,255,0.07);
       --dark-card:    rgba(255,255,255,0.045);
 
-      /* Accent */
-      --indigo:  #6366F1;
-      --purple:  #8B5CF6;
-      --cyan:    #06B6D4;
-      --pink:    #EC4899;
+      /* Accent — Sleek Monolith palette */
+      --primary:   #FFFFFF;
+      --secondary: #E2E8F0;
+      --tertiary:  #94A3B8;
+      --quaternary:#64748B;
+      --light:     #F8FAFC;
+      --glow:      #FFFFFF;
 
       /* Gradient stops */
-      --grad-primary: linear-gradient(135deg, var(--indigo) 0%, var(--purple) 100%);
-      --grad-hero:    linear-gradient(160deg, #07091A 0%, #130A2E 50%, #07091A 100%);
-      --grad-text:    linear-gradient(90deg, var(--indigo), var(--purple), var(--cyan));
+      --grad-primary: linear-gradient(135deg, var(--secondary) 0%, var(--quaternary) 100%);
+      --grad-hero:    linear-gradient(160deg, #000000 0%, #0A0A0A 50%, #000000 100%);
+      --grad-text:    linear-gradient(90deg, var(--primary), var(--secondary), var(--tertiary));
 
       /* Text */
-      --text-white:  #F1F5F9;
-      --text-muted:  #8896B3;
+      --text-white:  #E2E8F0;
+      --text-muted:  #64748B;
       --text-dark:   #0F172A;
       --text-gray:   #64748B;
 
       /* Shadows */
-      --glow-indigo: 0 0 40px rgba(99,102,241,0.35);
-      --glow-card:   0 8px 32px rgba(99,102,241,0.12);
-      --shadow-xl:   0 20px 60px rgba(0,0,0,0.5);
+      --glow-primary: 0 0 30px rgba(255,255,255,0.15);
+      --glow-card:    0 8px 32px rgba(255,255,255,0.05);
+      --shadow-xl:    0 20px 60px rgba(0,0,0,0.5);
 
       /* Spacing */
       --max-w: 1200px;
@@ -107,20 +109,20 @@
       gap: 6px;
       padding: 6px 16px;
       border-radius: 999px;
-      background: rgba(99,102,241,0.12);
-      border: 1px solid rgba(99,102,241,0.3);
+      background: rgba(255,255,255,0.12);
+      border: 1px solid rgba(255,255,255,0.3);
       font-size: 0.78rem;
       font-weight: 700;
       letter-spacing: 0.1em;
       text-transform: uppercase;
-      color: var(--indigo);
+      color: var(--secondary);
       margin-bottom: 20px;
     }
 
     .section-badge.light {
-      background: rgba(99,102,241,0.15);
-      border-color: rgba(99,102,241,0.35);
-      color: #A5B4FC;
+      background: rgba(255,255,255,0.15);
+      border-color: rgba(255,255,255,0.35);
+      color: #E2E8F0;
     }
 
     /* ============================================================
@@ -168,12 +170,12 @@
       content: '';
       position: absolute;
       inset: 0;
-      background: linear-gradient(135deg, var(--purple) 0%, var(--indigo) 100%);
+      background: linear-gradient(135deg, var(--quaternary) 0%, var(--secondary) 100%);
       opacity: 0;
       transition: opacity 0.3s ease;
     }
     .btn-gradient:hover::before { opacity: 1; }
-    .btn-gradient:hover { box-shadow: 0 0 28px rgba(99,102,241,0.55); transform: translateY(-2px); }
+    .btn-gradient:hover { box-shadow: 0 0 28px rgba(255,255,255,0.55); transform: translateY(-2px); }
     .btn-gradient span { position: relative; z-index: 1; }
 
     .btn-ghost-white {
@@ -189,7 +191,7 @@
 
     .btn-white {
       background: #fff;
-      color: var(--indigo);
+      color: var(--secondary);
       font-weight: 700;
     }
     .btn-white:hover { background: #F0F4FF; transform: translateY(-2px); box-shadow: 0 8px 24px rgba(0,0,0,0.15); }
@@ -206,26 +208,35 @@
     }
 
     /* ============================================================
-       1. NAVBAR — Fixed top glassmorphism bar
+       1. NAVBAR — Floating pill glassmorphism (like reference)
        ============================================================ */
     .navbar {
       position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 64px;
+      top: 16px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: calc(100% - 48px);
+      max-width: 1160px;
+      height: 60px;
       z-index: 1000;
-      background: rgba(7, 9, 26, 0.60);
-      backdrop-filter: blur(24px) saturate(180%);
-      -webkit-backdrop-filter: blur(24px) saturate(180%);
-      border-bottom: 1px solid rgba(255,255,255,0.09);
-      box-shadow: 0 1px 0 rgba(255,255,255,0.04), 0 4px 24px rgba(0,0,0,0.25);
+      /* Very translucent so the hero gradient bleeds through */
+      background: rgba(255, 255, 255, 0.06);
+      backdrop-filter: blur(20px) saturate(160%);
+      -webkit-backdrop-filter: blur(20px) saturate(160%);
+      border: 1px solid rgba(255,255,255,0.15);
+      border-radius: 999px;
+      /* Subtle glow below + inner top highlight */
+      box-shadow:
+        0 8px 32px rgba(0,0,0,0.30),
+        inset 0 1px 0 rgba(255,255,255,0.18);
       transition: background 0.4s ease, box-shadow 0.4s ease, border-color 0.4s ease;
     }
     .navbar.scrolled {
-      background: rgba(5, 7, 20, 0.92);
-      border-bottom-color: rgba(255,255,255,0.12);
-      box-shadow: 0 1px 0 rgba(99,102,241,0.2), 0 8px 32px rgba(0,0,0,0.4);
+      background: rgba(7, 9, 26, 0.70);
+      border-color: rgba(255,255,255,0.12);
+      box-shadow:
+        0 12px 40px rgba(0,0,0,0.45),
+        inset 0 1px 0 rgba(255,255,255,0.10);
     }
 
     .navbar__inner {
@@ -233,9 +244,7 @@
       align-items: center;
       justify-content: space-between;
       height: 100%;
-      max-width: var(--max-w);
-      margin: 0 auto;
-      padding: 0 24px;
+      padding: 0 8px 0 20px;
     }
 
     .navbar__logo {
@@ -310,18 +319,22 @@
     .nav-toggle.open span:nth-child(3) { transform: rotate(-45deg) translate(5px,-5px); }
 
     @media (max-width: 768px) {
+      .navbar {
+        top: 10px;
+        width: calc(100% - 24px);
+      }
       .navbar__links {
         position: fixed;
-        top: 64px;
-        left: 0; right: 0;
+        top: 80px;
+        left: 12px; right: 12px;
         flex-direction: column;
-        background: rgba(7,9,26,0.96);
+        background: rgba(7, 9, 26, 0.92);
         backdrop-filter: blur(24px);
         -webkit-backdrop-filter: blur(24px);
-        padding: 24px;
+        padding: 20px;
         gap: 4px;
-        border-bottom: 1px solid rgba(255,255,255,0.08);
-        border-radius: 0;
+        border-radius: 20px;
+        border: 1px solid rgba(255,255,255,0.12);
         box-shadow: 0 16px 40px rgba(0,0,0,0.5);
         transform: translateY(-10px);
         opacity: 0;
@@ -337,7 +350,7 @@
       .navbar__links a {
         text-align: center;
         width: 100%;
-        padding: 12px 16px;
+        padding: 11px 16px;
         border-radius: 10px;
       }
       .navbar__cta { display: none; }
@@ -356,7 +369,7 @@
       min-height: 100vh;
       display: flex;
       align-items: center;
-      padding: calc(var(--nav-h) + 72px) 0 100px;
+      padding: calc(var(--nav-h) + 80px) 0 100px;
       overflow: hidden;
       background: var(--grad-hero);
     }
@@ -376,19 +389,19 @@
     }
     .orb-1 {
       width: 600px; height: 600px;
-      background: var(--indigo);
+      background: var(--secondary);
       top: -200px; left: -150px;
       animation: orbDrift1 10s ease-in-out infinite;
     }
     .orb-2 {
       width: 500px; height: 500px;
-      background: var(--purple);
+      background: var(--quaternary);
       top: 10%; right: -100px;
       animation: orbDrift2 12s ease-in-out infinite;
     }
     .orb-3 {
       width: 400px; height: 400px;
-      background: var(--cyan);
+      background: var(--tertiary);
       bottom: -100px; left: 25%;
       animation: orbDrift3 8s ease-in-out infinite;
     }
@@ -428,8 +441,8 @@
       gap: 8px;
       padding: 8px 20px;
       border-radius: 999px;
-      border: 1px solid rgba(99,102,241,0.4);
-      background: rgba(99,102,241,0.1);
+      border: 1px solid rgba(255,255,255,0.4);
+      background: rgba(255,255,255,0.1);
       backdrop-filter: blur(8px);
       font-size: 0.88rem;
       font-weight: 700;
@@ -440,13 +453,13 @@
     .hero__badge .badge-dot {
       width: 8px; height: 8px;
       border-radius: 50%;
-      background: var(--indigo);
-      box-shadow: 0 0 8px rgba(99,102,241,0.8);
+      background: var(--secondary);
+      box-shadow: 0 0 8px rgba(255,255,255,0.8);
       animation: pulse 2s ease-in-out infinite;
     }
     @keyframes pulse {
-      0%,100% { box-shadow: 0 0 8px rgba(99,102,241,0.8); }
-      50%      { box-shadow: 0 0 16px rgba(99,102,241,1), 0 0 32px rgba(99,102,241,0.5); }
+      0%,100% { box-shadow: 0 0 8px rgba(255,255,255,0.8); }
+      50%      { box-shadow: 0 0 16px rgba(255,255,255,1), 0 0 32px rgba(255,255,255,0.5); }
     }
 
     .hero__h1 {
@@ -502,17 +515,17 @@
       margin-left: -10px;
     }
     .avatar:first-child { margin-left: 0; }
-    .avatar-1 { background: linear-gradient(135deg, #6366F1, #8B5CF6); }
-    .avatar-2 { background: linear-gradient(135deg, #06B6D4, #3B82F6); }
-    .avatar-3 { background: linear-gradient(135deg, #EC4899, #EF4444); }
-    .avatar-4 { background: linear-gradient(135deg, #F59E0B, #EF4444); }
-    .avatar-5 { background: linear-gradient(135deg, #10B981, #06B6D4); }
+    .avatar-1 { background: linear-gradient(135deg, #E2E8F0, #FFFFFF); }
+    .avatar-2 { background: linear-gradient(135deg, #94A3B8, #E2E8F0); }
+    .avatar-3 { background: linear-gradient(135deg, #FFFFFF, #94A3B8); }
+    .avatar-4 { background: linear-gradient(135deg, #FFFFFF, #94A3B8); }
+    .avatar-5 { background: linear-gradient(135deg, #64748B, #E2E8F0); }
 
     .hero__trust-text {
       font-size: 0.9rem;
       color: var(--text-muted);
     }
-    .hero__stars { color: #F59E0B; letter-spacing: 2px; font-size: 0.85rem; }
+    .hero__stars { color: #E2E8F0; letter-spacing: 2px; font-size: 0.85rem; }
 
     /* Floating mockup */
     .hero__mockup-wrap {
@@ -527,7 +540,7 @@
       transform: translateX(-50%);
       width: 70%;
       height: 40px;
-      background: var(--indigo);
+      background: var(--secondary);
       filter: blur(40px);
       opacity: 0.5;
       border-radius: 50%;
@@ -598,8 +611,8 @@
       color: var(--text-muted);
     }
     .mock-nav-item.active {
-      background: rgba(99,102,241,0.2);
-      color: var(--indigo);
+      background: rgba(255,255,255,0.2);
+      color: var(--secondary);
     }
     .mock-nav-dot {
       width: 7px; height: 7px;
@@ -637,9 +650,9 @@
       height: 14px;
       border-radius: 4px;
     }
-    .mock-stat-val.indigo { background: linear-gradient(90deg, #6366F1, #8B5CF6); }
-    .mock-stat-val.cyan   { background: linear-gradient(90deg, #06B6D4, #3B82F6); }
-    .mock-stat-val.green  { background: linear-gradient(90deg, #10B981, #34D399); }
+    .mock-stat-val.indigo { background: linear-gradient(90deg, #E2E8F0, #FFFFFF); }
+    .mock-stat-val.cyan   { background: linear-gradient(90deg, #94A3B8, #E2E8F0); }
+    .mock-stat-val.green  { background: linear-gradient(90deg, #FFFFFF, #94A3B8); }
 
     /* Bar chart */
     .mock-chart {
@@ -667,13 +680,13 @@
       border-radius: 4px 4px 0 0;
       opacity: 0.85;
     }
-    .bar-1 { height: 55%; background: linear-gradient(180deg, #6366F1, #4338CA); }
-    .bar-2 { height: 75%; background: linear-gradient(180deg, #8B5CF6, #6D28D9); }
-    .bar-3 { height: 45%; background: linear-gradient(180deg, #6366F1, #4338CA); }
-    .bar-4 { height: 90%; background: linear-gradient(180deg, #06B6D4, #0284C7); }
-    .bar-5 { height: 65%; background: linear-gradient(180deg, #8B5CF6, #6D28D9); }
-    .bar-6 { height: 80%; background: linear-gradient(180deg, #6366F1, #4338CA); }
-    .bar-7 { height: 50%; background: linear-gradient(180deg, #06B6D4, #0284C7); }
+    .bar-1 { height: 55%; background: linear-gradient(180deg, #E2E8F0, #BE185D); }
+    .bar-2 { height: 75%; background: linear-gradient(180deg, #FFFFFF, #9D174D); }
+    .bar-3 { height: 45%; background: linear-gradient(180deg, #E2E8F0, #BE185D); }
+    .bar-4 { height: 90%; background: linear-gradient(180deg, #94A3B8, #059669); }
+    .bar-5 { height: 65%; background: linear-gradient(180deg, #94A3B8, #DB2777); }
+    .bar-6 { height: 80%; background: linear-gradient(180deg, #E2E8F0, #BE185D); }
+    .bar-7 { height: 50%; background: linear-gradient(180deg, #94A3B8, #059669); }
 
     /* Platform pills */
     .mock-platforms {
@@ -691,9 +704,9 @@
       background: rgba(255,255,255,0.04);
     }
     .mock-pill.active {
-      background: rgba(99,102,241,0.2);
-      border-color: rgba(99,102,241,0.4);
-      color: #A5B4FC;
+      background: rgba(255,255,255,0.2);
+      border-color: rgba(255,255,255,0.4);
+      color: #E2E8F0;
     }
 
     @media (max-width: 768px) {
@@ -795,8 +808,8 @@
     }
     .stat-card:hover {
       transform: translateY(-6px);
-      border-color: rgba(99,102,241,0.35);
-      box-shadow: 0 20px 60px rgba(99,102,241,0.15), 0 0 0 1px rgba(99,102,241,0.15);
+      border-color: rgba(255,255,255,0.35);
+      box-shadow: 0 20px 60px rgba(255,255,255,0.15), 0 0 0 1px rgba(255,255,255,0.15);
     }
     .stat-card:hover::before { opacity: 0.06; }
 
@@ -846,7 +859,7 @@
       top: 0; left: 50%; right: 0; bottom: 0;
       transform: translateX(-50%);
       width: 100%;
-      background: radial-gradient(ellipse 70% 50% at 50% 0%, rgba(99,102,241,0.08) 0%, transparent 70%);
+      background: radial-gradient(ellipse 70% 50% at 50% 0%, rgba(255,255,255,0.08) 0%, transparent 70%);
       pointer-events: none;
     }
     .features__header {
@@ -901,15 +914,15 @@
       content: '';
       position: absolute;
       inset: 0;
-      background: linear-gradient(135deg, rgba(99,102,241,0.09) 0%, rgba(139,92,246,0.05) 100%);
+      background: linear-gradient(135deg, rgba(255,255,255,0.09) 0%, rgba(226,232,240,0.05) 100%);
       opacity: 0;
       transition: opacity 0.35s ease;
       border-radius: inherit;
     }
     .bento-card:hover {
       transform: translateY(-5px);
-      border-color: rgba(99,102,241,0.40);
-      box-shadow: 0 24px 60px rgba(0,0,0,0.4), 0 0 0 1px rgba(99,102,241,0.20), 0 0 40px rgba(99,102,241,0.12);
+      border-color: rgba(255,255,255,0.40);
+      box-shadow: 0 24px 60px rgba(0,0,0,0.4), 0 0 0 1px rgba(255,255,255,0.20), 0 0 40px rgba(255,255,255,0.12);
     }
     .bento-card:hover::before { opacity: 1; }
 
@@ -918,33 +931,156 @@
     .bento-card-3 { grid-column: span 4; }
     .bento-card-4 { grid-column: span 4; }
     .bento-card-5 { grid-column: span 4; }
+    .bento-card-6 { grid-column: span 4; }
+    .bento-card-7 { grid-column: span 4; }
+    .bento-card-8 { grid-column: span 4; }
+    .bento-card-9 { grid-column: span 6; }
+    .bento-card-10 { grid-column: span 6; }
 
     @media (max-width: 1024px) {
       .bento-card-1, .bento-card-2 { grid-column: span 6; }
       .bento-card-3, .bento-card-4, .bento-card-5 { grid-column: span 6; }
       .bento-card-5 { grid-column: span 12; }
+      .bento-card-6, .bento-card-7, .bento-card-8 { grid-column: span 6; }
+      .bento-card-8 { grid-column: span 12; }
+      .bento-card-9, .bento-card-10 { grid-column: span 6; }
     }
     @media (max-width: 768px) {
       .bento-card-1, .bento-card-2, .bento-card-3,
-      .bento-card-4, .bento-card-5 { grid-column: span 12; }
+      .bento-card-4, .bento-card-5, .bento-card-6,
+      .bento-card-7, .bento-card-8, .bento-card-9,
+      .bento-card-10 { grid-column: span 12; }
+    }
+
+    /* ---- WhatsApp Automation Card Micro-visuals ---- */
+    .wa-chat { display: flex; flex-direction: column; gap: 8px; margin-top: 20px; }
+    .wa-bubble {
+      max-width: 80%; padding: 8px 13px;
+      border-radius: 16px; font-size: 0.78rem;
+      line-height: 1.5;
+    }
+    .wa-bubble.recv {
+      background: rgba(255,255,255,0.07);
+      border: 1px solid rgba(255,255,255,0.10);
+      color: var(--text-muted);
+      border-bottom-left-radius: 4px;
+      align-self: flex-start;
+    }
+    .wa-bubble.sent {
+      background: linear-gradient(135deg, #FFFFFF, #65A30D);
+      color: #fff;
+      border-bottom-right-radius: 4px;
+      align-self: flex-end;
+      font-weight: 600;
+    }
+    .wa-pulse {
+      display: inline-flex; align-items: center; gap: 4px;
+      margin-top: 4px; align-self: flex-start;
+    }
+    .wa-dot {
+      width: 6px; height: 6px; border-radius: 50%;
+      background: #FFFFFF;
+      animation: waPulse 1.2s ease-in-out infinite;
+    }
+    .wa-dot:nth-child(2) { animation-delay: 0.2s; }
+    .wa-dot:nth-child(3) { animation-delay: 0.4s; }
+    @keyframes waPulse { 0%,100%{opacity:0.3;transform:scale(0.8)} 50%{opacity:1;transform:scale(1)} }
+
+    /* ---- Email Marketing Card Micro-visuals ---- */
+    .email-stats { display: flex; flex-direction: column; gap: 10px; margin-top: 20px; }
+    .email-stat-row { display: flex; align-items: center; gap: 10px; }
+    .email-stat-label { font-size: 0.75rem; color: var(--text-muted); min-width: 70px; }
+    .email-stat-bar-wrap {
+      flex: 1; height: 7px; border-radius: 999px;
+      background: rgba(255,255,255,0.08); overflow: hidden;
+    }
+    .email-stat-bar {
+      height: 100%; border-radius: 999px;
+      transition: width 1.5s cubic-bezier(0.22,1,0.36,1);
+    }
+    .email-stat-pct { font-size: 0.78rem; font-weight: 700; color: var(--text-white); min-width: 34px; text-align: right; }
+
+    /* ---- Social Media Scheduling Micro-visuals ---- */
+    .social-cal {
+      display: grid; grid-template-columns: repeat(7, 1fr);
+      gap: 5px; margin-top: 20px;
+    }
+    .social-cal-day {
+      aspect-ratio: 1; border-radius: 6px;
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.07);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 0.65rem; color: var(--text-muted);
+      font-weight: 600; transition: all 0.3s ease;
+    }
+    .social-cal-day.has-post {
+      background: rgba(255,255,255,0.2);
+      border-color: rgba(255,255,255,0.45);
+      color: #E2E8F0;
+    }
+    .social-cal-day.has-post-2 {
+      background: rgba(226,232,240,0.22);
+      border-color: rgba(226,232,240,0.45);
+      color: #6EE7B7;
+    }
+    .social-cal-day.today {
+      background: var(--grad-primary);
+      border-color: transparent;
+      color: #fff;
+      box-shadow: 0 0 14px rgba(255,255,255,0.5);
+    }
+
+    /* ---- Lead Generation Micro-visuals ---- */
+    .lead-funnel { display: flex; flex-direction: column; gap: 6px; margin-top: 20px; align-items: center; }
+    .funnel-row {
+      border-radius: 8px; height: 28px;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 0 12px; font-size: 0.72rem; font-weight: 700;
+      color: rgba(255,255,255,0.85); transition: transform 0.3s ease;
+    }
+    .funnel-row:hover { transform: scaleX(1.03); }
+    .funnel-row-1 { width: 100%; background: linear-gradient(135deg, #E2E8F0, #F9A8D4); }
+    .funnel-row-2 { width: 78%;  background: linear-gradient(135deg, #FFFFFF, #94A3B8); }
+    .funnel-row-3 { width: 58%;  background: linear-gradient(135deg, #64748B, #6EE7B7); }
+    .funnel-row-4 { width: 38%;  background: linear-gradient(135deg, #FFFFFF, #BEF264); }
+
+    /* ---- AI Workflows Micro-visuals ---- */
+    .ai-flow { display: flex; flex-direction: column; gap: 0; margin-top: 20px; }
+    .ai-flow-node {
+      display: flex; align-items: center; gap: 10px;
+      padding: 7px 12px;
+      border-radius: 10px;
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.08);
+      font-size: 0.78rem; color: var(--text-muted);
+      position: relative; transition: all 0.3s ease;
+    }
+    .ai-flow-node:not(:last-child) { margin-bottom: 4px; }
+    .ai-flow-node:hover { border-color: rgba(255,255,255,0.45); color: var(--text-white); }
+    .ai-flow-dot {
+      width: 10px; height: 10px; border-radius: 50%; flex-shrink: 0;
+    }
+    .ai-flow-arrow {
+      font-size: 0.65rem; color: rgba(255,255,255,0.5);
+      text-align: center; padding: 1px 0; letter-spacing: 0;
     }
 
     .bento-icon {
       width: 52px; height: 52px;
       border-radius: 14px;
-      background: rgba(99,102,241,0.15);
+      background: rgba(255,255,255,0.15);
       display: flex;
       align-items: center;
       justify-content: center;
       margin-bottom: 20px;
-      border: 1px solid rgba(99,102,241,0.25);
+      border: 1px solid rgba(255,255,255,0.25);
       transition: transform 0.3s ease, background 0.3s ease;
       flex-shrink: 0;
     }
-    .bento-icon svg { width: 24px; height: 24px; color: var(--indigo); }
+    .bento-icon svg { width: 24px; height: 24px; color: var(--secondary); }
     .bento-card:hover .bento-icon {
       transform: scale(1.1) rotate(-4deg);
-      background: rgba(99,102,241,0.25);
+      background: rgba(255,255,255,0.25);
     }
 
     .bento-title {
@@ -982,13 +1118,13 @@
       transition: opacity 0.3s ease;
     }
     .bento-card:hover .bento-bar { opacity: 1; }
-    .bb-1 { height: 50%; background: #6366F1; }
-    .bb-2 { height: 75%; background: #8B5CF6; }
-    .bb-3 { height: 40%; background: #06B6D4; }
-    .bb-4 { height: 90%; background: #6366F1; }
-    .bb-5 { height: 60%; background: #8B5CF6; }
-    .bb-6 { height: 80%; background: #06B6D4; }
-    .bb-7 { height: 55%; background: #6366F1; }
+    .bb-1 { height: 50%; background: #E2E8F0; }
+    .bb-2 { height: 75%; background: #FFFFFF; }
+    .bb-3 { height: 40%; background: #94A3B8; }
+    .bb-4 { height: 90%; background: #E2E8F0; }
+    .bb-5 { height: 60%; background: #94A3B8; }
+    .bb-6 { height: 80%; background: #94A3B8; }
+    .bb-7 { height: 55%; background: #E2E8F0; }
 
     .bento-platforms {
       display: flex;
@@ -1006,7 +1142,7 @@
       background: rgba(255,255,255,0.05);
       transition: all 0.25s ease;
     }
-    .bento-card:hover .platform-chip { border-color: rgba(99,102,241,0.45); color: #A5B4FC; background: rgba(99,102,241,0.12); }
+    .bento-card:hover .platform-chip { border-color: rgba(255,255,255,0.45); color: #E2E8F0; background: rgba(255,255,255,0.12); }
 
     .bento-schedule {
       margin-top: 20px;
@@ -1029,7 +1165,7 @@
       flex-shrink: 0;
     }
     .schedule-text { font-size: 0.8rem; color: var(--text-muted); flex: 1; }
-    .schedule-time { font-size: 0.75rem; color: #A5B4FC; font-weight: 600; }
+    .schedule-time { font-size: 0.75rem; color: #E2E8F0; font-weight: 600; }
 
     /* ============================================================
        6. HOW IT WORKS — Dark section
@@ -1047,7 +1183,7 @@
       bottom: -100px; left: 50%;
       transform: translateX(-50%);
       width: 800px; height: 400px;
-      background: radial-gradient(ellipse, rgba(99,102,241,0.10) 0%, transparent 70%);
+      background: radial-gradient(ellipse, rgba(255,255,255,0.10) 0%, transparent 70%);
       pointer-events: none;
     }
     .how-it-works::before {
@@ -1057,7 +1193,7 @@
       transform: translateX(-50%);
       width: 1px;
       height: 100%;
-      background: linear-gradient(180deg, transparent, rgba(99,102,241,0.4), transparent);
+      background: linear-gradient(180deg, transparent, rgba(255,255,255,0.4), transparent);
     }
 
     .how-it-works__header {
@@ -1094,7 +1230,7 @@
       left: calc(12.5% + 24px);
       right: calc(12.5% + 24px);
       height: 2px;
-      border-top: 2px dashed rgba(99,102,241,0.3);
+      border-top: 2px dashed rgba(255,255,255,0.3);
       background: none;
       z-index: 0;
       animation: dashMove 3s linear infinite;
@@ -1125,8 +1261,8 @@
       background: linear-gradient(90deg, transparent, rgba(255,255,255,0.14), transparent);
     }
     .step-card:hover {
-      border-color: rgba(99,102,241,0.38);
-      box-shadow: 0 20px 60px rgba(0,0,0,0.4), 0 0 0 1px rgba(99,102,241,0.15), 0 0 40px rgba(99,102,241,0.10);
+      border-color: rgba(255,255,255,0.38);
+      box-shadow: 0 20px 60px rgba(0,0,0,0.4), 0 0 0 1px rgba(255,255,255,0.15), 0 0 40px rgba(255,255,255,0.10);
       transform: translateY(-5px);
     }
 
@@ -1141,7 +1277,7 @@
       align-items: center;
       justify-content: center;
       margin: 0 auto 20px;
-      box-shadow: 0 4px 20px rgba(99,102,241,0.4);
+      box-shadow: 0 4px 20px rgba(255,255,255,0.4);
       position: relative;
     }
     .step-number::after {
@@ -1149,7 +1285,7 @@
       position: absolute;
       inset: -4px;
       border-radius: 50%;
-      border: 1px solid rgba(99,102,241,0.25);
+      border: 1px solid rgba(255,255,255,0.25);
     }
 
     .step-title {
@@ -1206,7 +1342,7 @@
       padding: 3px;
       border-radius: 22px;
       background: var(--grad-primary);
-      box-shadow: 0 24px 80px rgba(99,102,241,0.28);
+      box-shadow: 0 24px 80px rgba(255,255,255,0.28);
     }
     .demo__inner {
       border-radius: 20px;
@@ -1233,11 +1369,11 @@
       color: var(--text-muted);
     }
     .demo__note a {
-      color: var(--indigo);
+      color: var(--secondary);
       font-weight: 700;
       transition: color 0.2s ease;
     }
-    .demo__note a:hover { color: var(--purple); text-decoration: underline; }
+    .demo__note a:hover { color: var(--quaternary); text-decoration: underline; }
 
     /* ============================================================
        8. CTA BANNER
@@ -1255,8 +1391,8 @@
       position: absolute;
       inset: 0;
       background:
-        radial-gradient(ellipse 60% 70% at 20% 50%, rgba(99,102,241,0.22) 0%, transparent 60%),
-        radial-gradient(ellipse 50% 60% at 80% 50%, rgba(139,92,246,0.18) 0%, transparent 60%);
+        radial-gradient(ellipse 60% 70% at 20% 50%, rgba(255,255,255,0.22) 0%, transparent 60%),
+        radial-gradient(ellipse 50% 60% at 80% 50%, rgba(226,232,240,0.18) 0%, transparent 60%);
       pointer-events: none;
     }
     /* Glassmorphism inner card */
@@ -1287,7 +1423,7 @@
       position: absolute;
       width: 480px; height: 480px;
       border-radius: 50%;
-      background: rgba(99,102,241,0.18);
+      background: rgba(255,255,255,0.18);
       top: -180px; left: -120px;
       filter: blur(80px);
     }
@@ -1295,7 +1431,7 @@
       position: absolute;
       width: 360px; height: 360px;
       border-radius: 50%;
-      background: rgba(139,92,246,0.15);
+      background: rgba(226,232,240,0.15);
       bottom: -120px; right: -100px;
       filter: blur(80px);
     }
@@ -1338,7 +1474,7 @@
       content: '';
       position: absolute;
       width: 600px; height: 600px;
-      background: radial-gradient(circle, rgba(99,102,241,0.12) 0%, transparent 70%);
+      background: radial-gradient(circle, rgba(255,255,255,0.12) 0%, transparent 70%);
       top: 50%; left: 50%;
       transform: translate(-50%,-50%);
       pointer-events: none;
@@ -1429,17 +1565,17 @@
     }
     .fgroup input::placeholder, .fgroup textarea::placeholder { color: rgba(255,255,255,0.25); }
     .fgroup input:focus, .fgroup textarea:focus {
-      border-color: rgba(99,102,241,0.65);
-      box-shadow: 0 0 0 3px rgba(99,102,241,0.15);
+      border-color: rgba(255,255,255,0.65);
+      box-shadow: 0 0 0 3px rgba(255,255,255,0.15);
       background: rgba(255,255,255,0.08);
     }
     .fgroup input.err, .fgroup textarea.err {
-      border-color: rgba(239,68,68,0.7);
-      box-shadow: 0 0 0 3px rgba(239,68,68,0.12);
+      border-color: rgba(100,116,139,0.7);
+      box-shadow: 0 0 0 3px rgba(100,116,139,0.12);
     }
     .fgroup .errmsg {
       font-size: 0.78rem;
-      color: #EF4444;
+      color: #64748B;
       max-height: 0;
       overflow: hidden;
       transition: max-height 0.25s ease;
@@ -1466,12 +1602,12 @@
       content: '';
       position: absolute;
       inset: 0;
-      background: linear-gradient(135deg, var(--purple), var(--indigo));
+      background: linear-gradient(135deg, var(--quaternary), var(--secondary));
       opacity: 0;
       transition: opacity 0.3s ease;
     }
     .form-submit:hover::before { opacity: 1; }
-    .form-submit:hover { box-shadow: 0 0 28px rgba(99,102,241,0.5); transform: translateY(-2px); }
+    .form-submit:hover { box-shadow: 0 0 28px rgba(255,255,255,0.5); transform: translateY(-2px); }
     .form-submit span { position: relative; z-index: 1; }
 
     /* Loading state */
@@ -1506,13 +1642,13 @@
     .success-check {
       width: 72px; height: 72px;
       border-radius: 50%;
-      background: linear-gradient(135deg, #10B981, #34D399);
+      background: linear-gradient(135deg, #E2E8F0, #FFFFFF);
       display: flex;
       align-items: center;
       justify-content: center;
       font-size: 2rem;
       margin: 0 auto 24px;
-      box-shadow: 0 8px 32px rgba(16,185,129,0.35);
+      box-shadow: 0 8px 32px rgba(255,255,255,0.35);
     }
     .success-title {
       font-size: 1.4rem;
@@ -1619,7 +1755,7 @@
       border-color: transparent;
       color: #fff;
       transform: translateY(-2px);
-      box-shadow: 0 4px 16px rgba(99,102,241,0.35);
+      box-shadow: 0 4px 16px rgba(255,255,255,0.35);
     }
 
     @media (max-width: 1024px) {
@@ -1640,10 +1776,27 @@
     <div class="navbar__inner">
 
       <a href="#" class="navbar__logo">
-        <span class="navbar__logo-icon">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.5"><polygon points="13,2 3,14 12,14 11,22 21,10 12,10"/></svg>
-        </span>
-        <span class="navbar__logo-text">Actech</span>
+        <svg class="navbar__logo-img" viewBox="0 0 100 100" style="height: 32px; width: 32px; margin-right: 8px;">
+          <!-- Top Face -->
+          <polygon points="50,5 89,27.5 50,50 11,27.5" fill="#C61C76" />
+          <!-- Left Outer Blue -->
+          <polygon points="11,27.5 11,72.5 30.5,61.25" fill="#2167BA" />
+          <!-- Left Inner White -->
+          <polygon points="11,72.5 30.5,61.25 37,72.5" fill="#FFFFFF" />
+          <!-- Left Bottom Magenta -->
+          <polygon points="11,72.5 37,72.5 50,95" fill="#C61C76" />
+          <!-- Center Yellow Triangle -->
+          <polygon points="11,27.5 50,50 50,95" fill="#F8C053" />
+          <!-- Right Inner White -->
+          <polygon points="89,27.5 50,50 69.5,61.25" fill="#FFFFFF" />
+          <!-- Right Inner Orange -->
+          <polygon points="50,50 69.5,61.25 63,72.5 50,72.5" fill="#F49C14" />
+          <!-- Right Bottom Magenta -->
+          <polygon points="50,72.5 63,72.5 50,95" fill="#C61C76" />
+          <!-- Right Outer Blue -->
+          <polygon points="89,27.5 89,72.5 50,95" fill="#2167BA" />
+        </svg>
+        <span class="navbar__logo-text">Balin</span>
       </a>
 
       <div class="navbar__links" id="navLinks">
@@ -1729,7 +1882,7 @@
                 <!-- PLACEHOLDER: Replace YOUR_VIDEO_ID with the actual YouTube video ID e.g. dQw4w9WgXcQ -->
                 <iframe
                   src="https://www.youtube.com/embed/YOUR_VIDEO_ID"
-                  title="Actech Product Demo"
+                  title="Balin Product Demo"
                   allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                   allowfullscreen>
                 </iframe>
@@ -1743,38 +1896,6 @@
   </section>
 
 
-  <!-- ============================================================
-       3. SOCIAL PROOF — Marquee
-       ============================================================ -->
-  <section class="social-proof">
-    <div class="social-proof__label">Trusted by teams at</div>
-    <div class="marquee-wrapper">
-      <div class="marquee-track">
-        <!-- First set -->
-        <span class="marquee-item">Salesforce</span>
-        <span class="marquee-item">HubSpot</span>
-        <span class="marquee-item">Notion</span>
-        <span class="marquee-item">Slack</span>
-        <span class="marquee-item">Stripe</span>
-        <span class="marquee-item">Figma</span>
-        <span class="marquee-item">Linear</span>
-        <span class="marquee-item">Vercel</span>
-        <span class="marquee-item">Intercom</span>
-        <span class="marquee-item">Loom</span>
-        <!-- Duplicate for seamless loop -->
-        <span class="marquee-item">Salesforce</span>
-        <span class="marquee-item">HubSpot</span>
-        <span class="marquee-item">Notion</span>
-        <span class="marquee-item">Slack</span>
-        <span class="marquee-item">Stripe</span>
-        <span class="marquee-item">Figma</span>
-        <span class="marquee-item">Linear</span>
-        <span class="marquee-item">Vercel</span>
-        <span class="marquee-item">Intercom</span>
-        <span class="marquee-item">Loom</span>
-      </div>
-    </div>
-  </section>
 
   <!-- ============================================================
        4. STATS SECTION
@@ -1822,7 +1943,7 @@
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/><path d="M8 14h.01M12 14h.01M16 14h.01M8 18h.01M12 18h.01"/></svg>
           </div>
           <h3 class="bento-title">Campaign Creation</h3>
-          <p class="bento-desc">Design and launch full marketing campaigns with ease. Set goals, target audiences, and let Actech do the heavy lifting while you focus on strategy.</p>
+          <p class="bento-desc">Design and launch full marketing campaigns with ease. Set goals, target audiences, and let Balin do the heavy lifting while you focus on strategy.</p>
           <div class="bento-visual">
             <div class="bento-bar-chart">
               <div class="bento-bar bb-1"></div>
@@ -1861,17 +1982,17 @@
           <p class="bento-desc">Plan your calendar weeks ahead. Schedule posts at optimal times for maximum reach.</p>
           <div class="bento-schedule">
             <div class="schedule-item">
-              <span class="schedule-dot" style="background:#6366F1;"></span>
+              <span class="schedule-dot" style="background:#E2E8F0;"></span>
               <span class="schedule-text">LinkedIn Post — Q3 Campaign</span>
               <span class="schedule-time">9:00 AM</span>
             </div>
             <div class="schedule-item">
-              <span class="schedule-dot" style="background:#06B6D4;"></span>
+              <span class="schedule-dot" style="background:#94A3B8;"></span>
               <span class="schedule-text">Facebook Story — Product Update</span>
               <span class="schedule-time">2:00 PM</span>
             </div>
             <div class="schedule-item">
-              <span class="schedule-dot" style="background:#8B5CF6;"></span>
+              <span class="schedule-dot" style="background:#FFFFFF;"></span>
               <span class="schedule-text">X Thread — Industry Insights</span>
               <span class="schedule-time">5:30 PM</span>
             </div>
@@ -1884,7 +2005,7 @@
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
           </div>
           <h3 class="bento-title">Lead Management</h3>
-          <p class="bento-desc">Capture leads from social posts and campaigns. Track, score, and nurture them — all inside Actech. Never lose a warm lead again.</p>
+          <p class="bento-desc">Capture leads from social posts and campaigns. Track, score, and nurture them — all inside Balin. Never lose a warm lead again.</p>
         </div>
 
         <!-- Card 5: Analytics (small) -->
@@ -1894,6 +2015,99 @@
           </div>
           <h3 class="bento-title">Analytics &amp; Reporting</h3>
           <p class="bento-desc">Real-time dashboards showing reach, engagement, click-throughs, and lead conversion rates across every channel. Turn data into action.</p>
+        </div>
+
+        <!-- Card 6: WhatsApp Automation -->
+        <div class="bento-card bento-card-6 reveal">
+          <div class="bento-icon" style="background:rgba(45,212,191,0.15);border-color:rgba(45,212,191,0.3);">
+            <svg viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
+          </div>
+          <h3 class="bento-title">WhatsApp Automation</h3>
+          <p class="bento-desc">Send personalized WhatsApp messages, follow-ups, and campaigns at scale. Automate drip sequences triggered by user actions.</p>
+          <div class="wa-chat">
+            <div class="wa-bubble recv">Hi! I saw your ad about digital marketing 👀</div>
+            <div class="wa-bubble sent">Hey! Thanks for reaching out 🚀 Let me send you our brochure right away!</div>
+            <div class="wa-bubble recv">Wow, that was fast! 😊</div>
+            <div class="wa-pulse">
+              <div class="wa-dot"></div>
+              <div class="wa-dot"></div>
+              <div class="wa-dot"></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Card 7: Email Marketing -->
+        <div class="bento-card bento-card-7 reveal reveal-delay-1">
+          <div class="bento-icon" style="background:rgba(255,255,255,0.15);border-color:rgba(255,255,255,0.3);">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+          </div>
+          <h3 class="bento-title">Email Marketing</h3>
+          <p class="bento-desc">Design beautiful email campaigns with AI-generated copy. Track open rates, clicks, and conversions in real time.</p>
+          <div class="email-stats">
+            <div class="email-stat-row">
+              <span class="email-stat-label">Open Rate</span>
+              <div class="email-stat-bar-wrap"><div class="email-stat-bar" style="width:68%;background:linear-gradient(90deg,#E2E8F0,#FFFFFF);"></div></div>
+              <span class="email-stat-pct">68%</span>
+            </div>
+            <div class="email-stat-row">
+              <span class="email-stat-label">Click Rate</span>
+              <div class="email-stat-bar-wrap"><div class="email-stat-bar" style="width:42%;background:linear-gradient(90deg,#94A3B8,#64748B);"></div></div>
+              <span class="email-stat-pct">42%</span>
+            </div>
+            <div class="email-stat-row">
+              <span class="email-stat-label">Converted</span>
+              <div class="email-stat-bar-wrap"><div class="email-stat-bar" style="width:24%;background:linear-gradient(90deg,#FFFFFF,#BEF264);"></div></div>
+              <span class="email-stat-pct">24%</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Card 8: Social Media Scheduling -->
+        <div class="bento-card bento-card-8 reveal reveal-delay-2">
+          <div class="bento-icon" style="background:rgba(100,116,139,0.15);border-color:rgba(100,116,139,0.3);">
+            <svg viewBox="0 0 24 24" fill="none" stroke="#64748B" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+          </div>
+          <h3 class="bento-title">Social Media Scheduling</h3>
+          <p class="bento-desc">Queue your posts weeks in advance. Our AI picks the best time to post on each platform for maximum reach.</p>
+          <div class="social-cal">
+            <div class="social-cal-day">Mo</div><div class="social-cal-day">Tu</div><div class="social-cal-day">We</div><div class="social-cal-day">Th</div><div class="social-cal-day">Fr</div><div class="social-cal-day">Sa</div><div class="social-cal-day">Su</div>
+            <div class="social-cal-day has-post">2</div><div class="social-cal-day">3</div><div class="social-cal-day has-post-2">4</div><div class="social-cal-day">5</div><div class="social-cal-day has-post">6</div><div class="social-cal-day">7</div><div class="social-cal-day">8</div>
+            <div class="social-cal-day">9</div><div class="social-cal-day has-post-2">10</div><div class="social-cal-day today">11</div><div class="social-cal-day has-post">12</div><div class="social-cal-day">13</div><div class="social-cal-day has-post-2">14</div><div class="social-cal-day">15</div>
+            <div class="social-cal-day has-post">16</div><div class="social-cal-day">17</div><div class="social-cal-day">18</div><div class="social-cal-day has-post">19</div><div class="social-cal-day has-post-2">20</div><div class="social-cal-day">21</div><div class="social-cal-day has-post">22</div>
+          </div>
+        </div>
+
+        <!-- Card 9: Lead Generation -->
+        <div class="bento-card bento-card-9 reveal">
+          <div class="bento-icon" style="background:rgba(56,189,248,0.15);border-color:rgba(56,189,248,0.3);">
+            <svg viewBox="0 0 24 24" fill="none" stroke="#94A3B8" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          </div>
+          <h3 class="bento-title">Lead Generation</h3>
+          <p class="bento-desc">Capture and qualify leads from every channel. Automated scoring, enrichment, and CRM sync so your sales team only speaks to warm prospects.</p>
+          <div class="lead-funnel">
+            <div class="funnel-row funnel-row-1"><span>Visitors</span><span>12,400</span></div>
+            <div class="funnel-row funnel-row-2"><span>Engaged</span><span>9,672</span></div>
+            <div class="funnel-row funnel-row-3"><span>Qualified</span><span>4,821</span></div>
+            <div class="funnel-row funnel-row-4"><span>Converted</span><span>1,843</span></div>
+          </div>
+        </div>
+
+        <!-- Card 10: AI-Powered Workflows -->
+        <div class="bento-card bento-card-10 reveal reveal-delay-1">
+          <div class="bento-icon" style="background:rgba(226,232,240,0.18);border-color:rgba(226,232,240,0.35);">
+            <svg viewBox="0 0 24 24" fill="none" stroke="#94A3B8" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M12 1v4M12 19v4M4.22 4.22l2.83 2.83M16.95 16.95l2.83 2.83M1 12h4M19 12h4M4.22 19.78l2.83-2.83M16.95 7.05l2.83-2.83"/></svg>
+          </div>
+          <h3 class="bento-title">AI-Powered Workflows</h3>
+          <p class="bento-desc">Build no-code automation flows that trigger on any event. AI writes content, personalises messages, and routes leads — all on autopilot.</p>
+          <div class="ai-flow">
+            <div class="ai-flow-node"><span class="ai-flow-dot" style="background:#E2E8F0;"></span>🧲 New lead captured from LinkedIn</div>
+            <div class="ai-flow-arrow">↓</div>
+            <div class="ai-flow-node"><span class="ai-flow-dot" style="background:#FFFFFF;"></span>🤖 AI scores &amp; enriches lead profile</div>
+            <div class="ai-flow-arrow">↓</div>
+            <div class="ai-flow-node"><span class="ai-flow-dot" style="background:#FFFFFF;"></span>💬 WhatsApp welcome message sent</div>
+            <div class="ai-flow-arrow">↓</div>
+            <div class="ai-flow-node"><span class="ai-flow-dot" style="background:#94A3B8;"></span>📧 Email drip sequence started</div>
+          </div>
         </div>
 
       </div>
@@ -1917,7 +2131,7 @@
         <div class="step-card reveal">
           <div class="step-number">1</div>
           <h3 class="step-title">Create Your Campaign</h3>
-          <p class="step-desc">Set your goal, define your audience, and craft your core message. Actech handles the rest.</p>
+          <p class="step-desc">Set your goal, define your audience, and craft your core message. Balin handles the rest.</p>
         </div>
         <div class="step-card reveal reveal-delay-1">
           <div class="step-number">2</div>
@@ -1949,7 +2163,7 @@
       <div class="cta-banner__glass">
         <h2 class="cta-banner__heading reveal">Ready to Automate<br/>Your Marketing?</h2>
         <p class="cta-banner__sub reveal reveal-delay-1">
-          Join 500+ marketing teams already using Actech to save time, generate leads, and grow faster.
+          Join 500+ marketing teams already using Balin to save time, generate leads, and grow faster.
         </p>
         <div class="cta-banner__actions reveal reveal-delay-2">
           <a href="#contact" class="btn btn-gradient"><span>Get Started Free →</span></a>
@@ -2039,8 +2253,18 @@
         <!-- Brand -->
         <div class="footer__brand">
           <div class="footer__logo">
-            <span>⚡</span>
-            <span class="footer__logo-text">Actech</span>
+            <svg viewBox="0 0 100 100" style="height: 24px; width: 24px; margin-right: 8px;">
+              <polygon points="50,5 89,27.5 50,50 11,27.5" fill="#C61C76" />
+              <polygon points="11,27.5 11,72.5 30.5,61.25" fill="#2167BA" />
+              <polygon points="11,72.5 30.5,61.25 37,72.5" fill="#FFFFFF" />
+              <polygon points="11,72.5 37,72.5 50,95" fill="#C61C76" />
+              <polygon points="11,27.5 50,50 50,95" fill="#F8C053" />
+              <polygon points="89,27.5 50,50 69.5,61.25" fill="#FFFFFF" />
+              <polygon points="50,50 69.5,61.25 63,72.5 50,72.5" fill="#F49C14" />
+              <polygon points="50,72.5 63,72.5 50,95" fill="#C61C76" />
+              <polygon points="89,27.5 89,72.5 50,95" fill="#2167BA" />
+            </svg>
+            <span class="footer__logo-text">Balin</span>
           </div>
           <p class="footer__tagline">The AI-powered platform for modern marketing teams.</p>
         </div>
@@ -2082,7 +2306,7 @@
 
       <!-- Bottom bar -->
       <div class="footer__bottom">
-        <p class="footer__copy">&copy; 2025 Actech, Inc. All rights reserved.</p>
+        <p class="footer__copy">&copy; 2025 Balin, Inc. All rights reserved.</p>
         <div class="footer__socials">
           <a href="#" class="footer__social-link" aria-label="LinkedIn">in</a>
           <a href="#" class="footer__social-link" aria-label="X / Twitter">𝕏</a>
