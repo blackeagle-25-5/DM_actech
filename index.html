@@ -2229,14 +2229,43 @@
 
         if (!valid) return;
 
-        /* Simulate loading */
+        /* Send data to Web3Forms */
         btn.classList.add('loading');
-        await new Promise(r => setTimeout(r, 1400));
-        btn.classList.remove('loading');
+        
+        try {
+          const formData = {
+            access_key: 'f3e9e5e0-c96e-483c-bb70-6bc8bde03d31', // <-- PASTE YOUR KEY HERE
+            name: document.getElementById('fullName').value,
+            email: document.getElementById('workEmail').value,
+            phone: document.getElementById('phone').value,
+            company: document.getElementById('company').value,
+            jobTitle: document.getElementById('jobTitle').value,
+            message: document.getElementById('message').value
+          };
 
-        /* Show success */
-        form.style.display = 'none';
-        success.classList.add('show');
+          const response = await fetch('https://api.web3forms.com/submit', {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+              'Accept': 'application/json'
+            },
+            body: JSON.stringify(formData)
+          });
+
+          const result = await response.json();
+          btn.classList.remove('loading');
+
+          if (result.success) {
+            /* Show success */
+            form.style.display = 'none';
+            success.classList.add('show');
+          } else {
+            alert('Something went wrong. Please try again.');
+          }
+        } catch (error) {
+          btn.classList.remove('loading');
+          alert('Error submitting form. Please check your connection.');
+        }
       });
     })();
   </script>
