@@ -206,26 +206,35 @@
     }
 
     /* ============================================================
-       1. NAVBAR — Fixed top glassmorphism bar
+       1. NAVBAR — Floating pill glassmorphism (like reference)
        ============================================================ */
     .navbar {
       position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 64px;
+      top: 16px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: calc(100% - 48px);
+      max-width: 1160px;
+      height: 60px;
       z-index: 1000;
-      background: rgba(7, 9, 26, 0.60);
-      backdrop-filter: blur(24px) saturate(180%);
-      -webkit-backdrop-filter: blur(24px) saturate(180%);
-      border-bottom: 1px solid rgba(255,255,255,0.09);
-      box-shadow: 0 1px 0 rgba(255,255,255,0.04), 0 4px 24px rgba(0,0,0,0.25);
+      /* Very translucent so the hero gradient bleeds through */
+      background: rgba(255, 255, 255, 0.06);
+      backdrop-filter: blur(20px) saturate(160%);
+      -webkit-backdrop-filter: blur(20px) saturate(160%);
+      border: 1px solid rgba(255,255,255,0.15);
+      border-radius: 999px;
+      /* Subtle glow below + inner top highlight */
+      box-shadow:
+        0 8px 32px rgba(0,0,0,0.30),
+        inset 0 1px 0 rgba(255,255,255,0.18);
       transition: background 0.4s ease, box-shadow 0.4s ease, border-color 0.4s ease;
     }
     .navbar.scrolled {
-      background: rgba(5, 7, 20, 0.92);
-      border-bottom-color: rgba(255,255,255,0.12);
-      box-shadow: 0 1px 0 rgba(99,102,241,0.2), 0 8px 32px rgba(0,0,0,0.4);
+      background: rgba(7, 9, 26, 0.70);
+      border-color: rgba(255,255,255,0.12);
+      box-shadow:
+        0 12px 40px rgba(0,0,0,0.45),
+        inset 0 1px 0 rgba(255,255,255,0.10);
     }
 
     .navbar__inner {
@@ -233,9 +242,7 @@
       align-items: center;
       justify-content: space-between;
       height: 100%;
-      max-width: var(--max-w);
-      margin: 0 auto;
-      padding: 0 24px;
+      padding: 0 8px 0 20px;
     }
 
     .navbar__logo {
@@ -310,18 +317,22 @@
     .nav-toggle.open span:nth-child(3) { transform: rotate(-45deg) translate(5px,-5px); }
 
     @media (max-width: 768px) {
+      .navbar {
+        top: 10px;
+        width: calc(100% - 24px);
+      }
       .navbar__links {
         position: fixed;
-        top: 64px;
-        left: 0; right: 0;
+        top: 80px;
+        left: 12px; right: 12px;
         flex-direction: column;
-        background: rgba(7,9,26,0.96);
+        background: rgba(7, 9, 26, 0.92);
         backdrop-filter: blur(24px);
         -webkit-backdrop-filter: blur(24px);
-        padding: 24px;
+        padding: 20px;
         gap: 4px;
-        border-bottom: 1px solid rgba(255,255,255,0.08);
-        border-radius: 0;
+        border-radius: 20px;
+        border: 1px solid rgba(255,255,255,0.12);
         box-shadow: 0 16px 40px rgba(0,0,0,0.5);
         transform: translateY(-10px);
         opacity: 0;
@@ -337,7 +348,7 @@
       .navbar__links a {
         text-align: center;
         width: 100%;
-        padding: 12px 16px;
+        padding: 11px 16px;
         border-radius: 10px;
       }
       .navbar__cta { display: none; }
@@ -356,7 +367,7 @@
       min-height: 100vh;
       display: flex;
       align-items: center;
-      padding: calc(var(--nav-h) + 72px) 0 100px;
+      padding: calc(var(--nav-h) + 80px) 0 100px;
       overflow: hidden;
       background: var(--grad-hero);
     }
@@ -918,15 +929,138 @@
     .bento-card-3 { grid-column: span 4; }
     .bento-card-4 { grid-column: span 4; }
     .bento-card-5 { grid-column: span 4; }
+    .bento-card-6 { grid-column: span 4; }
+    .bento-card-7 { grid-column: span 4; }
+    .bento-card-8 { grid-column: span 4; }
+    .bento-card-9 { grid-column: span 6; }
+    .bento-card-10 { grid-column: span 6; }
 
     @media (max-width: 1024px) {
       .bento-card-1, .bento-card-2 { grid-column: span 6; }
       .bento-card-3, .bento-card-4, .bento-card-5 { grid-column: span 6; }
       .bento-card-5 { grid-column: span 12; }
+      .bento-card-6, .bento-card-7, .bento-card-8 { grid-column: span 6; }
+      .bento-card-8 { grid-column: span 12; }
+      .bento-card-9, .bento-card-10 { grid-column: span 6; }
     }
     @media (max-width: 768px) {
       .bento-card-1, .bento-card-2, .bento-card-3,
-      .bento-card-4, .bento-card-5 { grid-column: span 12; }
+      .bento-card-4, .bento-card-5, .bento-card-6,
+      .bento-card-7, .bento-card-8, .bento-card-9,
+      .bento-card-10 { grid-column: span 12; }
+    }
+
+    /* ---- WhatsApp Automation Card Micro-visuals ---- */
+    .wa-chat { display: flex; flex-direction: column; gap: 8px; margin-top: 20px; }
+    .wa-bubble {
+      max-width: 80%; padding: 8px 13px;
+      border-radius: 16px; font-size: 0.78rem;
+      line-height: 1.5;
+    }
+    .wa-bubble.recv {
+      background: rgba(255,255,255,0.07);
+      border: 1px solid rgba(255,255,255,0.10);
+      color: var(--text-muted);
+      border-bottom-left-radius: 4px;
+      align-self: flex-start;
+    }
+    .wa-bubble.sent {
+      background: linear-gradient(135deg, #25D366, #128C7E);
+      color: #fff;
+      border-bottom-right-radius: 4px;
+      align-self: flex-end;
+      font-weight: 600;
+    }
+    .wa-pulse {
+      display: inline-flex; align-items: center; gap: 4px;
+      margin-top: 4px; align-self: flex-start;
+    }
+    .wa-dot {
+      width: 6px; height: 6px; border-radius: 50%;
+      background: #25D366;
+      animation: waPulse 1.2s ease-in-out infinite;
+    }
+    .wa-dot:nth-child(2) { animation-delay: 0.2s; }
+    .wa-dot:nth-child(3) { animation-delay: 0.4s; }
+    @keyframes waPulse { 0%,100%{opacity:0.3;transform:scale(0.8)} 50%{opacity:1;transform:scale(1)} }
+
+    /* ---- Email Marketing Card Micro-visuals ---- */
+    .email-stats { display: flex; flex-direction: column; gap: 10px; margin-top: 20px; }
+    .email-stat-row { display: flex; align-items: center; gap: 10px; }
+    .email-stat-label { font-size: 0.75rem; color: var(--text-muted); min-width: 70px; }
+    .email-stat-bar-wrap {
+      flex: 1; height: 7px; border-radius: 999px;
+      background: rgba(255,255,255,0.08); overflow: hidden;
+    }
+    .email-stat-bar {
+      height: 100%; border-radius: 999px;
+      transition: width 1.5s cubic-bezier(0.22,1,0.36,1);
+    }
+    .email-stat-pct { font-size: 0.78rem; font-weight: 700; color: var(--text-white); min-width: 34px; text-align: right; }
+
+    /* ---- Social Media Scheduling Micro-visuals ---- */
+    .social-cal {
+      display: grid; grid-template-columns: repeat(7, 1fr);
+      gap: 5px; margin-top: 20px;
+    }
+    .social-cal-day {
+      aspect-ratio: 1; border-radius: 6px;
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.07);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 0.65rem; color: var(--text-muted);
+      font-weight: 600; transition: all 0.3s ease;
+    }
+    .social-cal-day.has-post {
+      background: rgba(99,102,241,0.2);
+      border-color: rgba(99,102,241,0.45);
+      color: #A5B4FC;
+    }
+    .social-cal-day.has-post-2 {
+      background: rgba(139,92,246,0.22);
+      border-color: rgba(139,92,246,0.45);
+      color: #C4B5FD;
+    }
+    .social-cal-day.today {
+      background: var(--grad-primary);
+      border-color: transparent;
+      color: #fff;
+      box-shadow: 0 0 14px rgba(99,102,241,0.5);
+    }
+
+    /* ---- Lead Generation Micro-visuals ---- */
+    .lead-funnel { display: flex; flex-direction: column; gap: 6px; margin-top: 20px; align-items: center; }
+    .funnel-row {
+      border-radius: 8px; height: 28px;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 0 12px; font-size: 0.72rem; font-weight: 700;
+      color: rgba(255,255,255,0.85); transition: transform 0.3s ease;
+    }
+    .funnel-row:hover { transform: scaleX(1.03); }
+    .funnel-row-1 { width: 100%; background: linear-gradient(135deg, #6366F1, #818CF8); }
+    .funnel-row-2 { width: 78%;  background: linear-gradient(135deg, #8B5CF6, #A78BFA); }
+    .funnel-row-3 { width: 58%;  background: linear-gradient(135deg, #EC4899, #F472B6); }
+    .funnel-row-4 { width: 38%;  background: linear-gradient(135deg, #06B6D4, #22D3EE); }
+
+    /* ---- AI Workflows Micro-visuals ---- */
+    .ai-flow { display: flex; flex-direction: column; gap: 0; margin-top: 20px; }
+    .ai-flow-node {
+      display: flex; align-items: center; gap: 10px;
+      padding: 7px 12px;
+      border-radius: 10px;
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.08);
+      font-size: 0.78rem; color: var(--text-muted);
+      position: relative; transition: all 0.3s ease;
+    }
+    .ai-flow-node:not(:last-child) { margin-bottom: 4px; }
+    .ai-flow-node:hover { border-color: rgba(99,102,241,0.45); color: var(--text-white); }
+    .ai-flow-dot {
+      width: 10px; height: 10px; border-radius: 50%; flex-shrink: 0;
+    }
+    .ai-flow-arrow {
+      font-size: 0.65rem; color: rgba(99,102,241,0.5);
+      text-align: center; padding: 1px 0; letter-spacing: 0;
     }
 
     .bento-icon {
@@ -1894,6 +2028,99 @@
           </div>
           <h3 class="bento-title">Analytics &amp; Reporting</h3>
           <p class="bento-desc">Real-time dashboards showing reach, engagement, click-throughs, and lead conversion rates across every channel. Turn data into action.</p>
+        </div>
+
+        <!-- Card 6: WhatsApp Automation -->
+        <div class="bento-card bento-card-6 reveal">
+          <div class="bento-icon" style="background:rgba(37,211,102,0.15);border-color:rgba(37,211,102,0.3);">
+            <svg viewBox="0 0 24 24" fill="none" stroke="#25D366" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
+          </div>
+          <h3 class="bento-title">WhatsApp Automation</h3>
+          <p class="bento-desc">Send personalized WhatsApp messages, follow-ups, and campaigns at scale. Automate drip sequences triggered by user actions.</p>
+          <div class="wa-chat">
+            <div class="wa-bubble recv">Hi! I saw your ad about digital marketing 👀</div>
+            <div class="wa-bubble sent">Hey! Thanks for reaching out 🚀 Let me send you our brochure right away!</div>
+            <div class="wa-bubble recv">Wow, that was fast! 😊</div>
+            <div class="wa-pulse">
+              <div class="wa-dot"></div>
+              <div class="wa-dot"></div>
+              <div class="wa-dot"></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Card 7: Email Marketing -->
+        <div class="bento-card bento-card-7 reveal reveal-delay-1">
+          <div class="bento-icon" style="background:rgba(99,102,241,0.15);border-color:rgba(99,102,241,0.3);">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+          </div>
+          <h3 class="bento-title">Email Marketing</h3>
+          <p class="bento-desc">Design beautiful email campaigns with AI-generated copy. Track open rates, clicks, and conversions in real time.</p>
+          <div class="email-stats">
+            <div class="email-stat-row">
+              <span class="email-stat-label">Open Rate</span>
+              <div class="email-stat-bar-wrap"><div class="email-stat-bar" style="width:68%;background:linear-gradient(90deg,#6366F1,#8B5CF6);"></div></div>
+              <span class="email-stat-pct">68%</span>
+            </div>
+            <div class="email-stat-row">
+              <span class="email-stat-label">Click Rate</span>
+              <div class="email-stat-bar-wrap"><div class="email-stat-bar" style="width:42%;background:linear-gradient(90deg,#06B6D4,#22D3EE);"></div></div>
+              <span class="email-stat-pct">42%</span>
+            </div>
+            <div class="email-stat-row">
+              <span class="email-stat-label">Converted</span>
+              <div class="email-stat-bar-wrap"><div class="email-stat-bar" style="width:24%;background:linear-gradient(90deg,#EC4899,#F472B6);"></div></div>
+              <span class="email-stat-pct">24%</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Card 8: Social Media Scheduling -->
+        <div class="bento-card bento-card-8 reveal reveal-delay-2">
+          <div class="bento-icon" style="background:rgba(236,72,153,0.15);border-color:rgba(236,72,153,0.3);">
+            <svg viewBox="0 0 24 24" fill="none" stroke="#EC4899" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+          </div>
+          <h3 class="bento-title">Social Media Scheduling</h3>
+          <p class="bento-desc">Queue your posts weeks in advance. Our AI picks the best time to post on each platform for maximum reach.</p>
+          <div class="social-cal">
+            <div class="social-cal-day">Mo</div><div class="social-cal-day">Tu</div><div class="social-cal-day">We</div><div class="social-cal-day">Th</div><div class="social-cal-day">Fr</div><div class="social-cal-day">Sa</div><div class="social-cal-day">Su</div>
+            <div class="social-cal-day has-post">2</div><div class="social-cal-day">3</div><div class="social-cal-day has-post-2">4</div><div class="social-cal-day">5</div><div class="social-cal-day has-post">6</div><div class="social-cal-day">7</div><div class="social-cal-day">8</div>
+            <div class="social-cal-day">9</div><div class="social-cal-day has-post-2">10</div><div class="social-cal-day today">11</div><div class="social-cal-day has-post">12</div><div class="social-cal-day">13</div><div class="social-cal-day has-post-2">14</div><div class="social-cal-day">15</div>
+            <div class="social-cal-day has-post">16</div><div class="social-cal-day">17</div><div class="social-cal-day">18</div><div class="social-cal-day has-post">19</div><div class="social-cal-day has-post-2">20</div><div class="social-cal-day">21</div><div class="social-cal-day has-post">22</div>
+          </div>
+        </div>
+
+        <!-- Card 9: Lead Generation -->
+        <div class="bento-card bento-card-9 reveal">
+          <div class="bento-icon" style="background:rgba(6,182,212,0.15);border-color:rgba(6,182,212,0.3);">
+            <svg viewBox="0 0 24 24" fill="none" stroke="#06B6D4" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          </div>
+          <h3 class="bento-title">Lead Generation</h3>
+          <p class="bento-desc">Capture and qualify leads from every channel. Automated scoring, enrichment, and CRM sync so your sales team only speaks to warm prospects.</p>
+          <div class="lead-funnel">
+            <div class="funnel-row funnel-row-1"><span>Visitors</span><span>12,400</span></div>
+            <div class="funnel-row funnel-row-2"><span>Engaged</span><span>9,672</span></div>
+            <div class="funnel-row funnel-row-3"><span>Qualified</span><span>4,821</span></div>
+            <div class="funnel-row funnel-row-4"><span>Converted</span><span>1,843</span></div>
+          </div>
+        </div>
+
+        <!-- Card 10: AI-Powered Workflows -->
+        <div class="bento-card bento-card-10 reveal reveal-delay-1">
+          <div class="bento-icon" style="background:rgba(139,92,246,0.18);border-color:rgba(139,92,246,0.35);">
+            <svg viewBox="0 0 24 24" fill="none" stroke="#A78BFA" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M12 1v4M12 19v4M4.22 4.22l2.83 2.83M16.95 16.95l2.83 2.83M1 12h4M19 12h4M4.22 19.78l2.83-2.83M16.95 7.05l2.83-2.83"/></svg>
+          </div>
+          <h3 class="bento-title">AI-Powered Workflows</h3>
+          <p class="bento-desc">Build no-code automation flows that trigger on any event. AI writes content, personalises messages, and routes leads — all on autopilot.</p>
+          <div class="ai-flow">
+            <div class="ai-flow-node"><span class="ai-flow-dot" style="background:#6366F1;"></span>🧲 New lead captured from LinkedIn</div>
+            <div class="ai-flow-arrow">↓</div>
+            <div class="ai-flow-node"><span class="ai-flow-dot" style="background:#8B5CF6;"></span>🤖 AI scores &amp; enriches lead profile</div>
+            <div class="ai-flow-arrow">↓</div>
+            <div class="ai-flow-node"><span class="ai-flow-dot" style="background:#25D366;"></span>💬 WhatsApp welcome message sent</div>
+            <div class="ai-flow-arrow">↓</div>
+            <div class="ai-flow-node"><span class="ai-flow-dot" style="background:#06B6D4;"></span>📧 Email drip sequence started</div>
+          </div>
         </div>
 
       </div>
